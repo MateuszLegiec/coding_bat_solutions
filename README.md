@@ -1,6 +1,6 @@
 # CodingBatSolutions
+This repository contains solutions to the tasks from :
 http://codingbat.com/java
-This repository contains solutions to the tasks from codingbat.com
 
 ## Sources
 
