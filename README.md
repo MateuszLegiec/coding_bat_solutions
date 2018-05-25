@@ -1,3 +1,4 @@
+# CodingBatSolutions
 # codingbat.com
 This repository contains solutions to the tasks from codingbat.com
 
