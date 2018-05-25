@@ -4,7 +4,7 @@ package level1;
  *
  * @author MateuszLegiec
  */
-public class Resurection1 {
+public class Recursion1 {
       /*
  *
  * Given n of 1 or more, return the factorial of n, which is n * (n-1) *
