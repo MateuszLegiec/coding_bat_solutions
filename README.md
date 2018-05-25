@@ -22,4 +22,4 @@ This repository contains solutions to the tasks from codingbat.com
 * **[Warmup-2](https://github.com/MateuszLegiec/CodingBatSolutions/blob/master/src/level2/Warmup2)**
 
 ## Author
-* **Matusz Legieć** -  [kuzxnia](https://github.com/MateuszLegiec)
+* **Matusz Legieć** - (https://github.com/MateuszLegiec)
