@@ -3,11 +3,10 @@ package level2;
 import java.util.Arrays;
 
 /**
- *
  * @author MateuszLegiec
  */
 
-public class Logic22 {
+public class Logic2 {
     /*
      * We want to make a row of bricks that is goal inches long. We have a
      * number of small bricks (1 inch each) and big bricks (5 inches each).
@@ -16,7 +15,7 @@ public class Logic22 {
      * loops. See also: Introduction to MakeBricks
      */
     public boolean makeBricks(int small, int big, int goal) {
-        return (big*5>goal)?(goal%5<=small):(goal-5*big<=small);
+        return (big * 5 > goal) ? (goal % 5 <= small) : (goal - 5 * big <= small);
     }
 
     /*
@@ -25,13 +24,13 @@ public class Logic22 {
      * the sum.
      */
     public int loneSum(int a, int b, int c) {
-        if(a==b){
-            if(b==c)  return 0;
+        if (a == b) {
+            if (b == c) return 0;
             return c;
         }
-        if(b==c)  return a;
-        if(a==c)  return b;
-        return a+b+c;
+        if (b == c) return a;
+        if (a == c) return b;
+        return a + b + c;
     }
 
     /*
@@ -41,10 +40,10 @@ public class Logic22 {
      * count.
      */
     public int luckySum(int a, int b, int c) {
-        if(a==13) return 0;
-        if(b==13) return a;
-        if(c==13) return a+b;
-        return a+b+c;
+        if (a == 13) return 0;
+        if (b == 13) return a;
+        if (c == 13) return a + b;
+        return a + b + c;
     }
 
     /*
@@ -60,7 +59,7 @@ public class Logic22 {
         return fixTeen(a) + fixTeen(b) + fixTeen(c);
     }
 
-    public int fixTeen(int n) {
+    private int fixTeen(int n) {
         n = (n >= 13 && n <= 14) || (n > 16 && n <= 19) ? 0 : n;
         return n;
     }
@@ -75,10 +74,11 @@ public class Logic22 {
      * entirely below and at the same indent level as roundSum().
      */
     public int roundSum(int a, int b, int c) {
-        return round10(a)+round10(b)+round10(c);
+        return round10(a) + round10(b) + round10(c);
     }
-    public int round10(int num){
-        return  (num%10<5)?num-(num%10):num-((num%10)-10);
+
+    private int round10(int num) {
+        return (num % 10 < 5) ? num - (num % 10) : num - ((num % 10) - 10);
     }
 
     /*
@@ -89,7 +89,7 @@ public class Logic22 {
      * absolute value of a number.
      */
     public boolean closeFar(int a, int b, int c) {
-        return ((Math.abs(b-a)<=1 && Math.abs(c-a)>1  &&  Math.abs(b-c)>1 )|| (Math.abs(c-a)<=1 && Math.abs(b-a)>1  &&  Math.abs(b-c)>1));
+        return ((Math.abs(b - a) <= 1 && Math.abs(c - a) > 1 && Math.abs(b - c) > 1) || (Math.abs(c - a) <= 1 && Math.abs(b - a) > 1 && Math.abs(b - c) > 1));
     }
 
 
@@ -98,10 +98,10 @@ public class Logic22 {
      * is nearest to 21 without going over. Return 0 if they both go over.
      */
     public int blackjack(int a, int b) {
-        if(21-b==21-a ||  (a>21 && b>21))  return 0;
-        if(a>21)  return b;
-        if(b>21)  return a;
-        if(21-a>21-b) return b;
+        if (21 - b == 21 - a || (a > 21 && b > 21)) return 0;
+        if (a > 21) return b;
+        if (b > 21) return a;
+        if (21 - a > 21 - b) return b;
         return a;
     }
 
@@ -123,10 +123,9 @@ public class Logic22 {
      * assuming we always use big bars before small bars. Return -1 if it can't be done.
      */
     public int makeChocolate(int small, int big, int goal) {
-        return (5*big>goal)?((goal%5<=small)?goal%5:-1):((goal-5*big<=small) ? (goal-5*big):(-1));
+        return (5 * big > goal) ? ((goal % 5 <= small) ? goal % 5 : -1) : ((goal - 5 * big <= small) ? (goal - 5 * big) : (-1));
 
     }
-
 
 
 }

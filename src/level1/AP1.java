@@ -1,6 +1,11 @@
 package level1;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+
 /**
- *
  * @author MateuszLegiec
  */
 public class AP1 {
@@ -9,18 +14,18 @@ public class AP1 {
      */
 
     public boolean scoresIncreasing(int[] scores) {
-        for(int i=0;i+1<scores.length;i++)
-            if(scores[i]>scores[i+1]) return false;
+        for (int i = 0; i + 1 < scores.length; i++)
+            if (scores[i] > scores[i + 1]) return false;
         return true;
     }
 
     /*
-     * Given an array of scores, return true if there are scores of 100 next to each other in the array. The array length will be at least 2. */
+     * Given an array of scores, return true if there are scores of 100 next to each other in the array. The array length will be at least 2.
      */
 
     public boolean scores100(int[] nums) {
-        for(int i=0;i+1<nums.length;i++)
-            if(nums[i]==100 &&  nums[i+1]==100) return true;
+        for (int i = 0; i + 1 < nums.length; i++)
+            if (nums[i] == 100 && nums[i + 1] == 100) return true;
         return false;
     }
 
@@ -30,9 +35,9 @@ public class AP1 {
      */
 
     public boolean scoresClump(int[] scores) {
-        for(int i=0;i+2<scores.length;i++)
-            if(scores[i]+2>=scores[i+2])  return  true;
-        return  false;
+        for (int i = 0; i + 2 < scores.length; i++)
+            if (scores[i] + 2 >= scores[i + 2]) return true;
+        return false;
     }
 
 
@@ -45,17 +50,18 @@ public class AP1 {
      */
 
     public int scoresAverage(int[] scores) {
-        return Math.max(average(scores,0,scores.length/2),average(scores,scores.length/2,scores.length-1));
+        return Math.max(average(scores, 0, scores.length / 2), average(scores, scores.length / 2, scores.length - 1));
     }
-    int average(int[] scores, int start, int end){
-        int k=0;
-        int sum=0;
-        for(int i=start;i<end;i++){
-            sum=sum+scores[i];
+
+    private int average(int[] scores, int start, int end) {
+        int k = 0;
+        int sum = 0;
+        for (int i = start; i < end; i++) {
+            sum = sum + scores[i];
             k++;
         }
-        if(k==0)  return scores[start];
-        return sum/k;
+        if (k == 0) return scores[start];
+        return sum / k;
     }
 
     /*
@@ -63,9 +69,9 @@ public class AP1 {
      */
 
     public int wordsCount(String[] words, int len) {
-        int k=0;
-        for(int i=0;i<words.length;i++){
-            if(words[i].length()==len)  k++;
+        int k = 0;
+        for (String word : words) {
+            if (word.length() == len) k++;
         }
         return k;
     }
@@ -76,7 +82,7 @@ public class AP1 {
      */
 
     public String[] wordsFront(String[] words, int n) {
-        return Arrays.copyOfRange(words,0,n);
+        return Arrays.copyOfRange(words, 0, n);
     }
 
 
@@ -86,10 +92,10 @@ public class AP1 {
      */
 
     public List wordsWithoutList(String[] words, int len) {
-        List result=new ArrayList();
-        for(int i=0;i<words.length;i++)
-            if(words[i].length()!=len)
-                result.add(words[i]);
+        List result = new ArrayList();
+        for (String word : words)
+            if (word.length() != len)
+                result.add(word);
         return result;
     }
 
@@ -98,27 +104,29 @@ public class AP1 {
      *Given a positive int n, return true if it contains a 1 digit. Note: use % to get the rightmost digit, and / to discard the rightmost digit.
      */
     public boolean hasOne(int n) {
-        return rec(n)==1;
+        return rec(n) == 1;
     }
-    public int rec(int n){
-        if(n==0)  return 0;
-        if(n%10==1)  return 1;
-        return rec(n/10);
+
+    private int rec(int n) {
+        if (n == 0) return 0;
+        if (n % 10 == 1) return 1;
+        return rec(n / 10);
     }
 
 
-   /*
-    * We'll say that a positive int divides itself if every digit in the number divides into the number evenly.
-    * So for example 128 divides itself since 1, 2, and 8 all divide into 128 evenly. We'll say that 0 does not divide into anything evenly, so no number with a 0 digit divides itself.
-    * Note: use % to get the rightmost digit, and / to discard the rightmost digit.
-    */
-   public boolean dividesSelf(int n) {
-       return rest(n,n)==1;
-   }
-    public int rest(int a,int rob){
-        if(rob==0)  return  1;
-        if(rob%10==0  ||  a%(rob%10)!=0) return 0;
-        return rest(a,rob/10);
+    /*
+     * We'll say that a positive int divides itself if every digit in the number divides into the number evenly.
+     * So for example 128 divides itself since 1, 2, and 8 all divide into 128 evenly. We'll say that 0 does not divide into anything evenly, so no number with a 0 digit divides itself.
+     * Note: use % to get the rightmost digit, and / to discard the rightmost digit.
+     */
+    public boolean dividesSelf(int n) {
+        return rest(n, n) == 1;
+    }
+
+    private int rest(int a, int rob) {
+        if (rob == 0) return 1;
+        if (rob % 10 == 0 || a % (rob % 10) != 0) return 0;
+        return rest(a, rob / 10);
     }
 
 
@@ -128,32 +136,32 @@ public class AP1 {
      */
 
     public int[] copyEvens(int[] nums, int count) {
-        int[] result=new int[count];
-        int k=0;
-        for(int i=0;i<nums.length &&  k<count;i++)
-            if(nums[i]%2==0){
-                result[k]=nums[i];
+        int[] result = new int[count];
+        int k = 0;
+        for (int i = 0; i < nums.length && k < count; i++)
+            if (nums[i] % 2 == 0) {
+                result[k] = nums[i];
                 k++;
             }
         return result;
     }
 
 
-  /*
-   * We'll say that a positive int n is "endy" if it is in the range 0..10 or 90..100 (inclusive).
-   * Given an array of positive ints, return a new array of length "count" containing the first endy numbers from the original array.
-   * Decompose out a separate isEndy(int n) method to test if a number is endy. The original array will contain at least "count" endy numbers.
-   */
+    /*
+     * We'll say that a positive int n is "endy" if it is in the range 0..10 or 90..100 (inclusive).
+     * Given an array of positive ints, return a new array of length "count" containing the first endy numbers from the original array.
+     * Decompose out a separate isEndy(int n) method to test if a number is endy. The original array will contain at least "count" endy numbers.
+     */
 
-  public int[] copyEndy(int[] nums, int count) {
-      int[] result  = new int[count];
-      for(int i=0,k=0;i<nums.length &&  k<count;i++)
-          if((nums[i]<=100 &&  nums[i]>=90)||(nums[i]>=0  &&  nums[i]<=10)){
-              result[k]=nums[i];
-              k++;
-          }
-      return result;
-  }
+    public int[] copyEndy(int[] nums, int count) {
+        int[] result = new int[count];
+        for (int i = 0, k = 0; i < nums.length && k < count; i++)
+            if ((nums[i] <= 100 && nums[i] >= 90) || (nums[i] >= 0 && nums[i] <= 10)) {
+                result[k] = nums[i];
+                k++;
+            }
+        return result;
+    }
 
     /*
      * Given 2 arrays that are the same length containing strings, compare the 1st string in one array to the 1st string in the other array, the 2nd to the 2nd and so on.
@@ -161,9 +169,9 @@ public class AP1 {
      */
 
     public int matchUp(String[] a, String[] b) {
-        int k=0;
-        for(int i=0;i<a.length;i++)
-            if(a[i]!="" &&  b[i]!="" &&  a[i].charAt(0)==b[i].charAt(0)) k++;
+        int k = 0;
+        for (int i = 0; i < a.length; i++)
+            if (!a[i].isEmpty() && !b[i].isEmpty() && a[i].charAt(0) == b[i].charAt(0)) k++;
         return k;
     }
 
@@ -174,10 +182,10 @@ public class AP1 {
      */
 
     public int scoreUp(String[] key, String[] answers) {
-        int k=0;
-        for(int i=0;i<key.length;i++){
-            if(key[i]==answers[i])  k+=4;
-            if(key[i]!=answers[i] && answers[i]!="?" )  k-=1;
+        int k = 0;
+        for (int i = 0; i < key.length; i++) {
+            if (key[i].equals(answers[i])) k += 4;
+            if (!Objects.equals(key[i], answers[i]) && !Objects.equals(answers[i], "?")) k -= 1;
         }
         return k;
     }
@@ -188,15 +196,15 @@ public class AP1 {
      */
 
     public String[] wordsWithout(String[] words, String target) {
-        int k=0;
-        for(int i=0;i<words.length;i++)
-            if(words[i]!=target)
+        int k = 0;
+        for (String word : words)
+            if (!word.equals(target))
                 k++;
-        String[] result=new String[k];
-        k=0;
-        for(int i=0;i<words.length;i++)
-            if(words[i]!=target){
-                result[k]=words[i];
+        String[] result = new String[k];
+        k = 0;
+        for (String word : words)
+            if (!word.equals(target)) {
+                result[k] = word;
                 k++;
             }
         return result;
@@ -210,12 +218,12 @@ public class AP1 {
      */
 
     public int scoresSpecial(int[] a, int[] b) {
-        return (specialFinder(a)+specialFinder(b));
+        return (specialFinder(a) + specialFinder(b));
     }
-    public int specialFinder(int[]  a){
-        int max=0;
-        for(int i=0;i<a.length;i++)
-            if(a[i]%10==0 &&  a[i]>max) max=a[i];
+
+    private int specialFinder(int[] a) {
+        int max = 0;
+        for (int anA : a) if (anA % 10 == 0 && anA > max) max = anA;
         return max;
     }
 
@@ -226,9 +234,9 @@ public class AP1 {
      */
 
     public int sumHeights(int[] heights, int start, int end) {
-        int sum=0;
-        for(int i=start;i+1<=end;i++)
-            sum=sum + Math.abs(heights[i]-heights[i+1]);
+        int sum = 0;
+        for (int i = start; i + 1 <= end; i++)
+            sum = sum + Math.abs(heights[i] - heights[i + 1]);
         return sum;
     }
 
@@ -239,11 +247,11 @@ public class AP1 {
      */
 
     public int sumHeights2(int[] heights, int start, int end) {
-        int sum=0;
-        for(int i=start;i<end;i++){
-            if(heights[i+1]>heights[i])
-                sum=sum+2*(heights[i+1]-heights[i]);
-            else sum=sum+heights[i]-heights[i+1];
+        int sum = 0;
+        for (int i = start; i < end; i++) {
+            if (heights[i + 1] > heights[i])
+                sum = sum + 2 * (heights[i + 1] - heights[i]);
+            else sum = sum + heights[i] - heights[i + 1];
         }
         return sum;
     }
@@ -254,9 +262,9 @@ public class AP1 {
      */
 
     public int bigHeights(int[] heights, int start, int end) {
-        int k=0;
-        for(int i=start;i<end;i++)
-            if(Math.abs(heights[i+1]-heights[i])>=5)  k++;
+        int k = 0;
+        for (int i = start; i < end; i++)
+            if (Math.abs(heights[i + 1] - heights[i]) >= 5) k++;
         return k;
     }
 
@@ -269,8 +277,8 @@ public class AP1 {
      * */
 
     public int userCompare(String aName, int aId, String bName, int bId) {
-        if(aName.compareTo(bName)>0 ||(aName.compareTo(bName)==0 && aId>bId))  return 1;
-        if(aName.compareTo(bName)==0 && aId==bId) return 0;
+        if (aName.compareTo(bName) > 0 || (aName.compareTo(bName) == 0 && aId > bId)) return 1;
+        if (aName.compareTo(bName) == 0 && aId == bId) return 0;
         return -1;
     }
 
